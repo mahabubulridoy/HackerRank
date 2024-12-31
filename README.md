@@ -489,7 +489,7 @@ The main function handles input and output.
 2. Total Sum: 1+2+3+4+5 = 15
 3. Mnimum Value: 1, Maximum Value: 5
 4. Minimum Sum: 15-5=10
-5. Maximum Sum: 15-1 =14
+5. Maximum Sum: 15-1 =14  
 **Output**
 10 14
 
