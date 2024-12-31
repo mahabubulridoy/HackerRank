@@ -250,7 +250,11 @@ Reads the second line of input, which contains space-separated integers.
 * split(' '): Splits the string by spaces to isolate each integer as a substring.  
 * map(|s| s.parse::<i64>().unwrap()): Parses each substring into a 64-bit integer (i64).  
 * .collect(): Converts the iterator into a vector of integers (Vec<i64>).
+
+  
 **Calling the Function**
+
+
   let result = aVeryBigSum(&ar);
   * The aVeryBigSum function is called with a reference to the vector ar, and the computed sum is stored in result.
 
