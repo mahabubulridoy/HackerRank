@@ -518,7 +518,7 @@ This function converts a time string in 12-hour AM/PM format into a 24-hour form
     * Otherwise, keep the hour unchanged.  
 * PM:  
     * If the hour is not 12, add 12 to convert to military time.  
-* Format the Time:  
+3. Format the Time:  
 
 * Use the format! macro to format the converted time as a string in hh:mm:ss format.  
 2. main Function  
