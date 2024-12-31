@@ -284,7 +284,7 @@ Reads the second line of input, which contains space-separated integers.
 * Clarity: The logic is cleanly separated into input processing, computation, and output
 
 
-##**Diagonal Difference**
+###**Diagonal Difference**
 
 use std::io;  
 * The std::io module is used for input and output operations. In this program, we use it to read user input from the standard input.
@@ -309,7 +309,9 @@ fn diagonalDifference(arr: Vec<Vec<i32>>) -> i32 {
     }  
 * This loop iterates over each row (i) in the matrix:  
     * Primary diagonal: Accessed using arr[i][i] (same row and column index).  
-    * Secondary diagonal: Accessed using arr[i][n - i - 1] (row i and column n - i - 1).  
+    * Secondary diagonal: Accessed using arr[i][n - i - 1] (row i and column n - i - 1).
+
+
 **For example:**  
 * For row 0, primary diagonal is arr[0][0], secondary diagonal is arr[0][n-1].  
 * For row 1, primary diagonal is arr[1][1], secondary diagonal is arr[1][n-2]
