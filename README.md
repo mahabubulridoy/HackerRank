@@ -177,4 +177,31 @@ use std::io::{self, BufRead, Write};
 * Write: For writing output to a file.
 
 
+2. Function Definition
+
+fn aVeryBigSum(ar: &[i64]) -> i64 {
+
+
+    // Sum up all elements in the array `ar` and return the result
+
+
+    ar.iter().sum()
+
+    
+}
+
+
+* Purpose: Takes a slice of 64-bit integers (&[i64]) as input and returns their sum as a 64-bit integer (i64).
+*Key Operations:
+
+
+    *ar.iter(): Creates an iterator over the elements of the slice.
+    *.sum(): Iterates through all elements, summing them up. The type inference ensures that the summation works with i64.
+
+
+
+
+3. 
+
+
 
