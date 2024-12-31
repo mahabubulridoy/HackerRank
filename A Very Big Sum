@@ -1,0 +1,39 @@
+use std::env;
+use std::fs::File;
+use std::io::{self, BufRead, Write};
+
+/*
+ * Complete the 'aVeryBigSum' function below.
+ *
+ * The function is expected to return a LONG_INTEGER.
+ * The function accepts LONG_INTEGER_ARRAY ar as parameter.
+ */
+
+fn aVeryBigSum(ar: &[i64]) -> i64 {
+    // Sum up all elements in the array `ar` and return the result
+    ar.iter().sum()
+}
+
+fn main() {
+    let stdin = io::stdin();
+    let mut stdin_iterator = stdin.lock().lines();
+
+    // Create or open the file where the output will be written
+    let mut fptr = File::create(env::var("OUTPUT_PATH").unwrap()).unwrap();
+
+    // Read the first line for the count of numbers in the array (though we don't actually need this in Rust)
+    let _ar_count = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();
+
+    // Read the second line, which contains the space-separated integers, and parse them into a Vec<i64>
+    let ar: Vec<i64> = stdin_iterator.next().unwrap().unwrap()
+        .trim_end()
+        .split(' ')
+        .map(|s| s.parse::<i64>().unwrap())
+        .collect();
+
+    // Call the aVeryBigSum function to get the result
+    let result = aVeryBigSum(&ar);
+
+    // Write the result to the output file specified by OUTPUT_PATH
+    writeln!(&mut fptr, "{}", result).ok();
+}
