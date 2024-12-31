@@ -316,6 +316,83 @@ fn diagonalDifference(arr: Vec<Vec<i32>>) -> i32 {
 * For row 0, primary diagonal is arr[0][0], secondary diagonal is arr[0][n-1].  
 * For row 1, primary diagonal is arr[1][1], secondary diagonal is arr[1][n-2]
 
+**Calculating the Absolute Difference**  
+    (primary_diagonal_sum - secondary_diagonal_sum).abs()  
+}  
+* Compute the difference between the two diagonal sums.  
+* Use .abs() to return the absolute value.  
+This function returns the result as an i32 integer.
+
+**2. main Function**  
+The main function handles input and output.  
+
+**Reading the Size of the Matrix**  
+    let mut input = String::new();  
+    io::stdin().read_line(&mut input).unwrap();  
+    let n: usize = input.trim().parse().unwrap(); // Read the size of the matrix  
+* A new string, input, is created to store the input data.  
+* io::stdin().read_line(&mut input).unwrap() reads a single line of input and stores it in input.  
+* The line is trimmed of extra whitespace using .trim() and parsed into a usize (unsigned integer) to represent the size of the matrix (n).
+
+**Reading the Matrix Rows**  
+    let mut arr: Vec<Vec<i32>> = Vec::new();  
+
+    for _ in 0..n {  
+        input.clear();  
+        io::stdin().read_line(&mut input).unwrap();  
+        let row: Vec<i32> = input  
+            .trim()  
+            .split_whitespace()  
+            .map(|x| x.parse::<i32>().unwrap())  
+            .collect();  
+        arr.push(row);  
+    }  
+1. **Matrix Initialization:** An empty 2D vector arr is created to store the matrix.  
+2. ##Loop Through Rows:##
+* For each row of the matrix (from 0 to n-1):  
+    * Clear the input string to read the next line of input.    
+    * Read the row as a single line.  
+    * Split the line by spaces using .split_whitespace().  
+    * Convert each space-separated value into an i32 using .map(|x| x.parse::<i32>().unwrap()).  
+    * Collect the parsed integers into a vector and add it to the 2D vector arr using .push(row).
+ 
+  **Calling the Function and Printing the Result**
+
+      let result = diagonalDifference(arr);  
+    println!("{}", result);
+* The diagonalDifference function is called with the matrix arr, and the result is stored in result.  
+* The result is printed to the console.
+
+
+**Example Execution**  
+**Input**  
+3  
+11 2 4  
+4 5 6  
+10 8 -12   
+**Step-by-Step Execution:**  
+1. Read Matrix Size:  
+* n = 3  
+2. **Read Matrix:**  
+* First row: [11, 2, 4]  
+* Second row: [4, 5, 6]  
+* Third row: [10, 8, -12]  
+* Final matrix
+[  
+    [11, 2, 4],  
+    [4, 5, 6],  
+    [10, 8, -12]  
+]  
+3. **Diagonal Sums**  
+  * Primary diagonal: 11 + 5 + (−12) = 4  
+  * Secondary diagonal: 4 + 5 + 10 = 19  
+4. ** Abdolute Difference:  
+    * ∣4−19∣=15  
+**Output** 
+15
+
+
+
 
 
 
