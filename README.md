@@ -430,7 +430,9 @@ __####__
 
    * Reads the integer input n from the standard input using the BufRead trait.  
     * Calls the staircase function with n to print the staircase.  
-**How to run**  
+**How to run**
+
+ 
 1. Save the code in a file, e.g., staircase.rs.
 2. Compile and run the program:
    rustc staircase.rs  
