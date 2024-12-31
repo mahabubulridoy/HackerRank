@@ -452,6 +452,46 @@ __####__
 __####__   
   
 
+##########**Mini-Max Sum**  
+This Rust program calculates and prints the minimum and maximum sums of four out of five elements in an array. For example, given an array [1, 2, 3, 4, 5], the minimum sum (by excluding the largest number) is 1 + 2 + 3 + 4 = 10, and the maximum sum (by excluding the smallest number) is 2 + 3 + 4 + 5 = 14.  
+
+
+**Explanation**  
+1. miniMaxSum Function  
+This function calculates the minimum and maximum sums of four out of five elements in the given array.  
+
+1. **Total Sum Calculation:  
+* The total sum of all elements in the array is calculated using arr.iter().sum().  
+2. Finding Minimum and Maximum Values:  
+* The smallest and largest values in the array are found using .min() and .max().  
+3. Calculating Min and Max Sums:  
+* Minimum Sum: The minimum sum is obtained by excluding the largest value: total_sum - max_value.  
+* Maximum Sum: The maximum sum is obtained by excluding the smallest value: total_sum - min_value.  
+4. Print the Result:  
+* The results are printed in the format min_sum max_sum.
+---
+
+2. main Function  
+The main function handles input and output.
+
+1. Reading Input:  
+* The program reads a single line of space-separated integers from the standard input.  
+* These integers are parsed into a vector of i64 using .split_whitespace() and .map(|s| s.parse::<i64>().unwrap()).  
+2. Calling the Function:  
+* The parsed array is passed to the miniMaxSum function, which prints the result.
+---
+
+**Example**  
+**Input**  
+1 2 3 4 5  
+**Execution:**  
+1. Array: [1,2,3,4,5]
+2. Total Sum: 1+2+3+4+5 = 15
+3. Mnimum Value: 1, Maximum Value: 5
+4. Minimum Sum: 15-5=10
+5. Maximum Sum: 15-1 =14
+**Output**
+10 14
 
 
 
