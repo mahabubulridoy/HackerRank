@@ -284,6 +284,26 @@ Reads the second line of input, which contains space-separated integers.
 * Clarity: The logic is cleanly separated into input processing, computation, and output
 
 
+##**Diagonal Difference**
+
+use std::io;  
+* The std::io module is used for input and output operations. In this program, we use it to read user input from the standard input.
+
+**1. diagonalDifference Function**  
+fn diagonalDifference(arr: Vec<Vec<i32>>) -> i32 {  
+    let n = arr.len();  
+    let mut primary_diagonal_sum = 0;  
+    let mut secondary_diagonal_sum = 0;  
+* **Purpose:** This function computes the absolute difference between the sums of the two diagonals in a square matrix.  
+**Parameters:**  
+* arr: A 2D vector (Vec<Vec<i32>>) representing the square matrix.  
+**Variables:**  
+* n: The size of the square matrix (number of rows or columns).
+* primary_diagonal_sum: Stores the sum of the primary diagonal (top-left to bottom-right).
+* secondary_diagonal_sum: Stores the sum of the secondary diagonal (top-right to bottom-left).
+
+
+
 
 
 
