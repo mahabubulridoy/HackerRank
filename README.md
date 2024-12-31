@@ -435,10 +435,11 @@ __####__
 ---  
 **How to run**  
 1. Save the code in a file, e.g., staircase.rs.
-2. Compile and run the program:
+2. Compile and run the program:  
    rustc staircase.rs  
 ./staircase
 3. Provide the input, e.g., 4, and the program will print the staircase pattern.
+---  
 
 **Example**  
 **Input**  
