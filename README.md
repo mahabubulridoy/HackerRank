@@ -149,7 +149,7 @@ Output:
 This Rust program calculates the sum of a list of large integers, stores the result, and writes it to an output file specified by the environment variable OUTPUT_PATH. Here's a detailed breakdown of the code:
 
 
-1. Importing Modules
+ 1.  Importing Modules
 
 
 use std::env;
