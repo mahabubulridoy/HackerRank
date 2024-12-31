@@ -302,6 +302,20 @@ fn diagonalDifference(arr: Vec<Vec<i32>>) -> i32 {
 * primary_diagonal_sum: Stores the sum of the primary diagonal (top-left to bottom-right).
 * secondary_diagonal_sum: Stores the sum of the secondary diagonal (top-right to bottom-left).
 
+**Iterating Through the Matrix**  
+    for i in 0..n {  
+        primary_diagonal_sum += arr[i][i]; // Sum of primary diagonal  
+        secondary_diagonal_sum += arr[i][n - i - 1]; // Sum of secondary diagonal  
+    }  
+* This loop iterates over each row (i) in the matrix:  
+    * Primary diagonal: Accessed using arr[i][i] (same row and column index).  
+    * Secondary diagonal: Accessed using arr[i][n - i - 1] (row i and column n - i - 1).  
+**For example:**  
+* For row 0, primary diagonal is arr[0][0], secondary diagonal is arr[0][n-1].  
+* For row 1, primary diagonal is arr[1][1], secondary diagonal is arr[1][n-2]
+
+
+
 
 
 
