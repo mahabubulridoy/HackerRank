@@ -494,6 +494,43 @@ The main function handles input and output.
 10 14
 
 
+**##########Time Conversion**  
+
+This Rust program converts a time string in 12-hour AM/PM format into 24-hour (military) time format. For example:
+
+* 12:00:00AM converts to 00:00:00.  
+* 07:05:45PM converts to 19:05:45.
+---
+
+
+**Explanation**  
+1. time_conversion Function  
+This function converts a time string in 12-hour AM/PM format into a 24-hour format.  
+
+1. Extract Components:  
+
+* Extract the AM/PM period using &s[8..].  
+* Extract the time (hours, minutes, seconds) using &s[0..8].  
+2. Handle AM/PM Cases:  
+
+* AM:  
+    * If the hour is 12 (midnight), convert it to 0 (00:00).  
+    * Otherwise, keep the hour unchanged.  
+* PM:  
+    * If the hour is not 12, add 12 to convert to military time.  
+* Format the Time:  
+
+* Use the format! macro to format the converted time as a string in hh:mm:ss format.  
+2. main Function  
+The main function handles input and output:  
+
+1. Read a single string input.  
+2. Call the time_conversion function with the input.  
+3. Print the result.
+---
+
+
+
 
 
 
