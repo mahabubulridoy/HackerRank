@@ -1,0 +1,39 @@
+use std::io::{self, BufRead};
+
+/*
+ * The function accepts an integer array `arr` and prints
+ * the minimum and maximum sum of four out of five elements.
+ */
+
+fn miniMaxSum(arr: &[i64]) {
+    // Calculate the total sum of all elements in the array
+    let total_sum: i64 = arr.iter().sum();
+    
+    // Find the minimum and maximum values in the array
+    let min_value = arr.iter().min().unwrap();
+    let max_value = arr.iter().max().unwrap();
+    
+    // Calculate the minimum sum by excluding the maximum value
+    let min_sum = total_sum - max_value;
+    
+    // Calculate the maximum sum by excluding the minimum value
+    let max_sum = total_sum - min_value;
+    
+    // Print the result in the format "min_sum max_sum"
+    println!("{} {}", min_sum, max_sum);
+}
+
+fn main() {
+    let stdin = io::stdin();
+    let mut stdin_iterator = stdin.lock().lines();
+
+    // Read the input line and parse it into a vector of integers
+    let arr: Vec<i64> = stdin_iterator.next().unwrap().unwrap()
+        .trim_end()
+        .split_whitespace()
+        .map(|s| s.parse::<i64>().unwrap())
+        .collect();
+
+    // Call the miniMaxSum function with the parsed array
+    miniMaxSum(&arr);
+}
