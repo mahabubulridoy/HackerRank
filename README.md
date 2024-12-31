@@ -553,6 +553,82 @@ The main function handles input and output:
 19:05:45
 
 
+**#########Grading Students**  
+
+This Rust program implements the "grading students" problem, where grades are adjusted based on specific rounding rules. The solution ensures grades follow the given criteria and handles input/output seamlessly. Below is a detailed explanation of the program and its functionality.
+
+---  
+
+**Problem Description**  
+The program adjusts grades according to the following rules:  
+
+1. If the grade is less than 38, it remains unchanged (failing grades are not rounded).
+2. For grades 38 and above:  
+* If the difference between the grade and the next multiple of 5 is less than 3, round the grade up to the next multiple of 5.
+* Otherwise, leave the grade unchanged.
+
+---
+
+**How It Works**  
+1. gradingStudents Function  
+* Input: A slice of integers representing student grades.  
+* Output: A vector of integers with grades adjusted based on the rules.  
+**Steps:**  
+
+1. Iterate through the grades using .iter() and apply a transformation using .map().  
+2. For grades less than 38, return the grade unchanged.  
+3. For grades 38 and above:  
+* Calculate the next multiple of 5 using ((grade / 5) + 1) * 5.  
+* If the difference between the grade and this next multiple is less than 3, round up to the multiple.  
+* Otherwise, return the original grade.  
+**2. main Function**  
+* Handles reading input, calling the gradingStudents function, and writing the output.  
+**Steps:**  
+
+1. Read the number of grades from standard input.  
+2. Parse the grades into a vector of integers.  
+3. Call gradingStudents with the vector of grades to process them.  
+4. Write the adjusted grades to a file specified by the OUTPUT_PATH environment variable.
+
+---
+
+**How to Use**  
+1. Save the Code: Save the code in a file, e.g., grading_students.rs.  
+
+2. Compile the Program:
+
+rustc grading_students.rs  
+3. Set the Output Path: Set the OUTPUT_PATH environment variable to specify the file where results will be saved:  
+export OUTPUT_PATH=output.txt  
+4. Run the program:  
+./grading_students  
+Provide input in the format:  
+
+<number of grades>
+<grade 1>
+<grade 2>
+...
+
+5. View the Output: The adjusted grades will be written to the file specified by OUTPUT_PATH.
+
+**Example**  
+**Input**  
+4  
+73  
+67  
+38  
+33  
+**Process**  
+1. Grade 73: Next multiple of 5 is 75. Difference is 75−73=2. Round up to 75.  
+2. Grade 67: Next multiple of 5 is 70. Difference is 70−67=3. No Rounding  
+3. Grade 38: Next multiple of 5 is 40. Difference is 40−38=2. Round up to 40.  
+4. Grade 33: Failing grade. No Rounding
+
+**Output**  
+75  
+67  
+40  
+33  
 
 
 
