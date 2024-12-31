@@ -259,6 +259,26 @@ Reads the second line of input, which contains space-separated integers.
   * The aVeryBigSum function is called with a reference to the vector ar, and the computed sum is stored in result.
 
 
+**Writing Output**
+
+    writeln!(&mut fptr, "{}", result).ok();
+
+
+* writeln!: Writes the result (sum of the array) to the file specified by fptr, followed by a newline.  
+* ok(): Silently handles any potential write errors by ignoring them.
+
+**Overall Flow**
+
+
+1. Input Handling:  
+* Read the size of the array (not directly used).
+* Parse the integers into a vector of i64.
+2. Computation:  
+* Calculate the sum using the aVeryBigSum function.
+3. Output Handling:  
+* Write the result to the specified output file.
+
+
 
 
 
