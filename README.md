@@ -278,6 +278,11 @@ Reads the second line of input, which contains space-separated integers.
 3. Output Handling:  
 * Write the result to the specified output file.
 
+**Key Advantages**  
+* Safety: unwrap() ensures errors are caught immediately (though it will panic if an error occurs).  
+* Efficiency: Uses buffered input and direct file output for high performance.  
+* Clarity: The logic is cleanly separated into input processing, computation, and output
+
 
 
 
