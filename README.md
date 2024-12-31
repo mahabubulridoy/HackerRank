@@ -143,13 +143,13 @@ Output:
 
 12
 
-###A Very Big Sum
+**###A Very Big Sum**
 
 
 This Rust program calculates the sum of a list of large integers, stores the result, and writes it to an output file specified by the environment variable OUTPUT_PATH. Here's a detailed breakdown of the code:
 
 
- 1.  Importing Modules
+ **1.  Importing Modules**
 
 
 use std::env;
@@ -177,7 +177,7 @@ use std::io::{self, BufRead, Write};
 * Write: For writing output to a file.
 
 
-2. Function Definition
+**2. Function Definition**
 
 fn aVeryBigSum(ar: &[i64]) -> i64 {
 
@@ -208,6 +208,50 @@ fn aVeryBigSum(ar: &[i64]) -> i64 {
 fn main() {
 
 The entry point of the program where the input is read, processed, and the output is written.
+
+**Reading Input**
+
+    let stdin = io::stdin();
+
+    
+    let mut stdin_iterator = stdin.lock().lines();
+
+*io::stdin(): Accesses the standard input stream.
+
+
+*stdin.lock().lines(): Creates an iterator to read lines from the input. Using a locked buffer ensures efficient reading.
+
+**Preparing the Output File**
+
+    let mut fptr = File::create(env::var("OUTPUT_PATH").unwrap()).unwrap();
+
+
+*env::var("OUTPUT_PATH"): Retrieves the value of the environment variable OUTPUT_PATH, which specifies the output file's path.
+
+
+*File::create: Creates or opens the file for writing. If the file cannot be opened, unwrap() will panic.
+
+**Processing Input**
+
+    let _ar_count = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();
+
+
+*Reads the first line of input and parses it as an integer (i32), representing the count of numbers. Although it's read, this value is not used in the program.
+
+    let ar: Vec<i64> = stdin_iterator.next().unwrap().unwrap()
+        .trim_end()
+        .split(' ')
+        .map(|s| s.parse::<i64>().unwrap())
+        .collect();
+Reads the second line of input, which contains space-separated integers.
+
+
+*trim_end(): Removes any trailing whitespace (e.g., newlines).  
+*split(' '): Splits the string by spaces to isolate each integer as a substring.  
+*map(|s| s.parse::<i64>().unwrap()): Parses each substring into a 64-bit integer (i64).  
+*.collect(): Converts the iterator into a vector of integers (Vec<i64>).  
+
+
 
 
 
