@@ -630,7 +630,45 @@ Provide input in the format:
 40  
 33  
 
+**##########Sherlock&Squares**
 
+
+**Problem Description**  
+Given two integers 𝑎 and 𝑏, find how many perfect square numbers lie between them, inclusive. A perfect square is a number that can be expressed as the square of an integer, such as 1,4,9,16,….  
+
+---  
+
+**How It Works**  
+1. squares Function  
+* Input: Two integers 𝑎 and 𝑏 representing the range.  
+* Output: An integer representing the count of perfect squares in the range.  
+**Steps:**  
+
+1. Use the square root function to find the smallest integer 𝑠𝑡𝑎𝑟𝑡 whose square is greater than or equal to 𝑎. This is calculated as:  
+𝑠𝑡𝑎𝑟𝑡=⌈√𝑎⌉  
+
+2. Similarly, find the largest integer 𝑒𝑛𝑑 whose square is less than or equal to 𝑏:  
+𝑒𝑛𝑑=⌊√𝑏⌋  
+3. Calculate the count of integers between 𝑠𝑡𝑎𝑟𝑡 and 𝑒𝑛𝑑, inclusive:  
+𝑐𝑜𝑢𝑛𝑡=𝑒𝑛𝑑−𝑠𝑡𝑎𝑟𝑡+1  
+4. If 𝑒𝑛𝑑<𝑠𝑡𝑎𝑟𝑡, there are no perfect squares in the range, so return 0.
+---
+**Input/Output Explanation  
+**Input Format**  
+1. The first line contains an integer q, the number of queries.  
+2. Each of the next q lines contains two integers, a and b, defining the range [a,b]
+
+**Example**  
+**Input**  
+2  
+3 9  
+17 24  
+**Output**  
+2  
+0  
+**Explanatoni**  
+1. For the range [3,9], the perfect squares are 4 and 9, so the count is 2.
+2. For the range [17,24], there is no perfect squares, so the count is 0.
 
 
 
