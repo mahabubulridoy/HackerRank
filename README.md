@@ -421,10 +421,10 @@ The line is constructed by concatenating the spaces and hashes and printed to th
 4. **Output:**
       * For n = 4, the output would be:
   
-   #
+   __#__
   ##
  ###
-####  
+#### __ 
 
 5. **Main Function:**  
 
