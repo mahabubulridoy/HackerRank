@@ -406,20 +406,20 @@ __####__
 **Explanation**  
 1. **Purpose:**  
 
-        * The staircase function prints a staircase pattern of size n, where each row has increasing numbers of # symbols, right-aligned by spaces.  
+   * The staircase function prints a staircase pattern of size n, where each row has increasing numbers of # symbols, right-aligned by spaces.  
 2. **Input:**  
 
-        * The program reads an integer n from the standard input, which determines the height and width of the staircase.  
+   * The program reads an integer n from the standard input, which determines the height and width of the staircase.  
 3. **How It Works:**  
 
-        * The for loop iterates from 1 to n (inclusive), representing each row of the staircase.  
+   * The for loop iterates from 1 to n (inclusive), representing each row of the staircase.  
 * **Spaces:**  
-        * For each row i, the number of spaces is calculated as n - i, and they are generated using " ".repeat((n - i) as usize).  
+  * For each row i, the number of spaces is calculated as n - i, and they are generated using " ".repeat((n - i) as usize).  
 * **Hashes:**  
-        * The number of # symbols is equal to the row number i, generated using "#".repeat(i as usize).
+  * The number of # symbols is equal to the row number i, generated using "#".repeat(i as usize).
 The line is constructed by concatenating the spaces and hashes and printed to the console using println!.
 4. **Output:**
-      * For n = 4, the output would be:
+  * For n = 4, the output would be:
   
    __#__  
   __##__  
@@ -428,8 +428,8 @@ __####__
 
 5. **Main Function:**  
 
-        * Reads the integer input n from the standard input using the BufRead trait.  
-        * Calls the staircase function with n to print the staircase.
+   * Reads the integer input n from the standard input using the BufRead trait.  
+    * Calls the staircase function with n to print the staircase.
 **How to run**  
 1. Save the code in a file, e.g., staircase.rs.
 2. Compile and run the program:
