@@ -1,0 +1,39 @@
+use std::io;
+
+/*
+ * The function converts a time string in 12-hour format to 24-hour format.
+ * 
+ * Parameters:
+ * - s: A string representing the time in 12-hour AM/PM format.
+ * 
+ * Returns:
+ * - A string representing the time in 24-hour format.
+ */
+fn time_conversion(s: &str) -> String {
+    // Split the input string into parts
+    let period = &s[8..]; // "AM" or "PM"
+    let time = &s[0..8]; // "hh:mm:ss"
+    let mut hours: i32 = time[0..2].parse().unwrap(); // Extract hours
+
+    if period == "AM" {
+        if hours == 12 {
+            hours = 0; // Convert "12 AM" to "00"
+        }
+    } else if period == "PM" {
+        if hours != 12 {
+            hours += 12; // Convert PM hours to 24-hour format
+        }
+    }
+
+    // Format the converted time as "hh:mm:ss"
+    format!("{:02}:{:02}:{:02}", hours, &time[3..5].parse::<i32>().unwrap(), &time[6..8].parse::<i32>().unwrap())
+}
+
+fn main() {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+    let input = input.trim(); // Trim any extra whitespace or newline characters
+
+    let result = time_conversion(input);
+    println!("{}", result);
+}
