@@ -389,10 +389,64 @@ The main function handles input and output.
 4. ** Abdolute Difference:  
     * ∣4−19∣=15  
 **Output** 
-15
+15  
 
 
+###**Staircase**
 
+
+This Rust program prints a right-aligned staircase pattern of size n using the # symbol. For example, if n = 4, the staircase would look like this:  
+
+
+   #
+  ##
+ ###
+####  
+
+**Explanation**  
+1. **Purpose:**  
+
+        * The staircase function prints a staircase pattern of size n, where each row has increasing numbers of # symbols, right-aligned by spaces.  
+2. **Input:**  
+
+        * The program reads an integer n from the standard input, which determines the height and width of the staircase.  
+3. **How It Works:**  
+
+        * The for loop iterates from 1 to n (inclusive), representing each row of the staircase.  
+* **Spaces:**  
+        * For each row i, the number of spaces is calculated as n - i, and they are generated using " ".repeat((n - i) as usize).  
+* **Hashes:**  
+        * The number of # symbols is equal to the row number i, generated using "#".repeat(i as usize).
+The line is constructed by concatenating the spaces and hashes and printed to the console using println!.
+4. **Output:**
+      * For n = 4, the output would be:
+  
+   #
+  ##
+ ###
+####  
+
+5. **Main Function:**  
+
+        * Reads the integer input n from the standard input using the BufRead trait.  
+        * Calls the staircase function with n to print the staircase.
+**How to run**  
+1. Save the code in a file, e.g., staircase.rs.
+2. Compile and run the program:
+   rustc staircase.rs  
+./staircase
+3. Provide the input, e.g., 4, and the program will print the staircase pattern.
+
+**Example**  
+**Input**  
+4  
+**Output**  
+
+   #
+  ##
+ ###
+####
+  
 
 
 
