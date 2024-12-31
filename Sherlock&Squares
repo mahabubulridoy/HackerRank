@@ -1,0 +1,49 @@
+use std::env;
+use std::fs::File;
+use std::io::{self, BufRead, Write};
+
+/*
+ * The `squares` function calculates the number of perfect squares
+ * in the range [a, b].
+ */
+fn squares(a: i32, b: i32) -> i32 {
+    // Calculate the smallest integer whose square is >= a
+    let start = (a as f64).sqrt().ceil() as i32;
+    // Calculate the largest integer whose square is <= b
+    let end = (b as f64).sqrt().floor() as i32;
+
+    // The count of perfect squares is the difference between end and start + 1
+    if end >= start {
+        end - start + 1
+    } else {
+        0 // No perfect squares in the range
+    }
+}
+
+fn main() {
+    let stdin = io::stdin();
+    let mut stdin_iterator = stdin.lock().lines();
+
+    // Create or open the output file specified by the OUTPUT_PATH environment variable
+    let mut fptr = File::create(env::var("OUTPUT_PATH").unwrap()).unwrap();
+
+    // Read the number of queries
+    let q = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();
+
+    // Process each query
+    for _ in 0..q {
+        let first_multiple_input: Vec<String> = stdin_iterator.next().unwrap().unwrap()
+            .split(' ')
+            .map(|s| s.to_string())
+            .collect();
+
+        let a = first_multiple_input[0].trim().parse::<i32>().unwrap();
+        let b = first_multiple_input[1].trim().parse::<i32>().unwrap();
+
+        // Call the `squares` function and get the result
+        let result = squares(a, b);
+
+        // Write the result to the output file
+        writeln!(&mut fptr, "{}", result).ok();
+    }
+}
