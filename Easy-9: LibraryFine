@@ -1,0 +1,60 @@
+use std::env;
+use std::fs::File;
+use std::io::{self, BufRead, Write};
+
+/*
+ * The `libraryFine` function calculates the fine for returning a book
+ * based on the return date and the expected date.
+ */
+fn libraryFine(d1: i32, m1: i32, y1: i32, d2: i32, m2: i32, y2: i32) -> i32 {
+    if y1 > y2 {
+        // Returned after the calendar year
+        10_000
+    } else if y1 == y2 {
+        if m1 > m2 {
+            // Returned after the expected month in the same year
+            500 * (m1 - m2)
+        } else if m1 == m2 && d1 > d2 {
+            // Returned after the expected day in the same month and year
+            15 * (d1 - d2)
+        } else {
+            // Returned on or before the expected date in the same month and year
+            0
+        }
+    } else {
+        // Returned on or before the calendar year
+        0
+    }
+}
+
+fn main() {
+    let stdin = io::stdin();
+    let mut stdin_iterator = stdin.lock().lines();
+
+    // Create or open the output file specified by OUTPUT_PATH
+    let mut fptr = File::create(env::var("OUTPUT_PATH").unwrap()).unwrap();
+
+    // Parse the first input line (return date)
+    let first_multiple_input: Vec<String> = stdin_iterator.next().unwrap().unwrap()
+        .split(' ')
+        .map(|s| s.to_string())
+        .collect();
+    let d1 = first_multiple_input[0].trim().parse::<i32>().unwrap();
+    let m1 = first_multiple_input[1].trim().parse::<i32>().unwrap();
+    let y1 = first_multiple_input[2].trim().parse::<i32>().unwrap();
+
+    // Parse the second input line (due date)
+    let second_multiple_input: Vec<String> = stdin_iterator.next().unwrap().unwrap()
+        .split(' ')
+        .map(|s| s.to_string())
+        .collect();
+    let d2 = second_multiple_input[0].trim().parse::<i32>().unwrap();
+    let m2 = second_multiple_input[1].trim().parse::<i32>().unwrap();
+    let y2 = second_multiple_input[2].trim().parse::<i32>().unwrap();
+
+    // Calculate the fine
+    let result = libraryFine(d1, m1, y1, d2, m2, y2);
+
+    // Write the result to the output file
+    writeln!(&mut fptr, "{}", result).ok();
+}
