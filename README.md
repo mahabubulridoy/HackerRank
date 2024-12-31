@@ -392,7 +392,7 @@ The main function handles input and output.
 15  
 
 
-###**Staircase**
+#############**Staircase**
 
 
 This Rust program prints a right-aligned staircase pattern of size n using the # symbol. For example, if n = 4, the staircase would look like this:  
