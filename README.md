@@ -201,9 +201,16 @@ fn aVeryBigSum(ar: &[i64]) -> i64 {
     *.sum(): Iterates through all elements, summing them up. The type inference ensures that the summation works with i64.
 
 
+3. **Main Function**
 
 
-3. 
+
+fn main() {
+
+The entry point of the program where the input is read, processed, and the output is written.
+
+
+
 
 
 
