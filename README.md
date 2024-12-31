@@ -530,6 +530,29 @@ The main function handles input and output:
 ---
 
 
+**How to Run**
+
+1. Save the code in a file, e.g., time_conversion.rs.
+2. Compile and run the program
+   rustc time_conversion.rs  
+./time_conversion
+3. Provide the input, e.g., 07:05:45PM, and the program will output the converted time.
+--- 
+
+**Example**  
+**Input**  
+07:05:45PM  
+**Execution:** 
+1. Input: 07:05:45PM  
+2. Period: PM  
+3. Time: 07:05:45  
+4. Conversion:    
+    * PM and hour is 7. Add 12: 19.  
+    * Result: 19:05:45.  
+**Output:**
+19:05:45
+
+
 
 
 
