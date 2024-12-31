@@ -3,7 +3,7 @@ This repository is for Advanced Technologies and Application Development
 
 
 
-1.  Solve me First (Easy)
+##########1.  Solve me First (Easy)
 
 
 use std::io;
@@ -143,7 +143,7 @@ Output:
 
 12
 
-**###A Very Big Sum**
+**##########A Very Big Sum**
 
 
 This Rust program calculates the sum of a list of large integers, stores the result, and writes it to an output file specified by the environment variable OUTPUT_PATH. Here's a detailed breakdown of the code:
@@ -284,7 +284,7 @@ Reads the second line of input, which contains space-separated integers.
 * Clarity: The logic is cleanly separated into input processing, computation, and output
 
 
-###**Diagonal Difference**
+##########**Diagonal Difference**
 
 use std::io;  
 * The std::io module is used for input and output operations. In this program, we use it to read user input from the standard input.
