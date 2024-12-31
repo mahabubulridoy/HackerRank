@@ -398,10 +398,10 @@ The main function handles input and output.
 This Rust program prints a right-aligned staircase pattern of size n using the # symbol. For example, if n = 4, the staircase would look like this:  
 
 
-   #
-  ##
- ###
-####  
+   __#__
+  __##__
+ __###__
+__####__  
 
 **Explanation**  
 1. **Purpose:**  
@@ -422,9 +422,9 @@ The line is constructed by concatenating the spaces and hashes and printed to th
       * For n = 4, the output would be:
   
    __#__
-  ##
- ###
-#### __ 
+  __##__
+ __###__
+__####__ 
 
 5. **Main Function:**  
 
@@ -442,10 +442,10 @@ The line is constructed by concatenating the spaces and hashes and printed to th
 4  
 **Output**  
 
-   #
-  ##
- ###
-####  
+   __#__
+  __##__
+ __###__
+__####__  
   
 
 
