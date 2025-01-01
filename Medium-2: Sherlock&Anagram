@@ -1,0 +1,46 @@
+use std::collections::HashMap;
+use std::env;
+use std::fs::File;
+use std::io::{self, BufRead, Write};
+
+/*
+ * The `sherlockAndAnagrams` function calculates the number of unordered anagrammatic pairs of substrings in a string.
+ */
+fn sherlockAndAnagrams(s: &str) -> i32 {
+    let mut substrings_count: HashMap<String, i32> = HashMap::new();
+
+    // Generate all substrings
+    for i in 0..s.len() {
+        for j in i + 1..=s.len() {
+            let mut substring: Vec<char> = s[i..j].chars().collect();
+            substring.sort_unstable(); // Sort characters in the substring
+            let key: String = substring.into_iter().collect();
+            *substrings_count.entry(key).or_insert(0) += 1; // Count sorted substrings
+        }
+    }
+
+    // Calculate the total number of anagrammatic pairs
+    substrings_count.values().fold(0, |acc, &count| acc + (count * (count - 1)) / 2)
+}
+
+fn main() {
+    let stdin = io::stdin();
+    let mut stdin_iterator = stdin.lock().lines();
+
+    // Create or open the output file specified by OUTPUT_PATH
+    let mut fptr = File::create(env::var("OUTPUT_PATH").unwrap()).unwrap();
+
+    // Read the number of queries
+    let q = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();
+
+    for _ in 0..q {
+        // Read the input string for each query
+        let s = stdin_iterator.next().unwrap().unwrap();
+
+        // Compute the result
+        let result = sherlockAndAnagrams(&s);
+
+        // Write the result to the output file
+        writeln!(&mut fptr, "{}", result).ok();
+    }
+}
