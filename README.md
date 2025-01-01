@@ -751,6 +751,66 @@ The book was returned 3 days late in the same month and year. The fine is 15×3=
    export OUTPUT_PATH=output.txt
 4. Run the program and provide input as specified in the problem statement.
 
+
+**##########HalloweenSale**  
+
+**Problem Statement**  
+You are given:  
+
+1. p: Initial price of the first game.  
+2. d: Amount by which the price decreases after each purchase.  
+3. m: Minimum price that the game can drop to.  
+4. s: Budget available.  
+The task is to calculate the number of games you can buy without exceeding your budget.
+
+---  
+**Explanation of the Code**  
+1. Function Parameters:  
+
+p: Initial price of the first game.  
+d: Decrease in price after each purchase.  
+m: Minimum possible price of the game.  
+s: Budget available.  
+2. Logic:  
+
+* Initialize current_price to p, total_spent to 0, and count to 0.  
+* se a loop to keep buying games as long as the total spending does not exceed the budget s.  
+* After each purchase:  
+    *Add current_price to total_spent.  
+    *Increment count.  
+    *Update current_price by reducing it by d, but ensure it does not go below m.  
+* Return the total number of games bought.  
+3. Input Parsing:  
+* The main function reads the input values and parses them into integers.  
+* These values are passed to the howManyGames function.  
+4. Output:  
+
+* The result is written to a file specified by the OUTPUT_PATH environment variable.
+---
+
+**Example Input and Output**  
+**Input**  
+20 3 6 80  
+**Output**  
+6  
+
+**Explanation**  
+* Initial prices of games: [20,17,14,11,8,6]  
+* Total spending: 20 + 17 + 14 + 11 + 8 + 6 = 76  
+* Remaining budget: 80 -76 = 4 (not enough for the next games)  
+* Total games bought: 6
+
+**How to use**  
+1. save the code in a file, e.g, how_many_games.rs.
+2. compile the program:
+   
+rustc how_many_games.rs  
+
+3. Set the OUTPUT_PATH environment variable to specify the output file:
+   export OUTPUT_PATH=output.txt
+4. Run the program and provide input as specified in the problem statement. 
+
+
    
 
 
