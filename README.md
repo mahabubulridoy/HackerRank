@@ -670,6 +670,68 @@ Given two integers 𝑎 and 𝑏, find how many perfect square numbers lie betwe
 1. For the range [3,9], the perfect squares are 4 and 9, so the count is 2.
 2. For the range [17,24], there is no perfect squares, so the count is 0.
 
+**##########LibraryFine**  
+
+**Problem Description**  
+
+You are required to calculate a fine based on the return date of a library book.  
+
+The fine is calculated as follows:  
+
+1. If the book is returned on or before the expected return date, no fine is charged.  
+2. If the book is returned after the expected return date but within the same calendar month and year, the fine is 15 Hackos for each day late.    
+3. If the book is returned after the expected return month but within the same calendar year, the fine is 500 Hackos for each month late.  
+4. If the book is returned after the calendar year in which it was expected, the fine is fixed at 10,000 Hackos.  
+
+---
+
+**Explanation of the Code**    
+1. Function Definition:      
+
+* The function libraryFine takes six integer parameters:    
+    * 𝑑1,𝑚1,𝑦1: The day, month, and year of the actual return date.    
+    * 𝑑2,𝑚2,𝑦2: The day, month, and year of the expected return date.    
+* It returns an integer representing the fine.    
+2. Logic:    
+
+* Late Year:  
+    * If the book is returned after the expected calendar year (𝑦1>𝑦2), the fine is fixed at  10,000 Hackos.  
+* Late Month:  
+    * If the book is returned in the same calendar year (𝑦1==𝑦2) but after the expected month (
+𝑚1>𝑚2), the fine is 500 Hackos per month.  
+* Late Day:  
+    *If the book is returned in the same calendar year and month (𝑦1==𝑦2 and 𝑚1==𝑚2) but after the expected day (𝑑1>𝑑2), the fine is 15 Hackos per day.  
+* On-Time:  
+    *If the book is returned on or before the expected date (𝑦1<𝑦2 or 𝑦1==𝑦2&&𝑚1<𝑚2 or 𝑦1==𝑦2&& 𝑚1==𝑚2&&𝑑1<=𝑑2), there is no fine.  
+3. Input Parsing:  
+
+* The main function reads the return date and the expected date from standard input.  
+* These dates are passed to the libraryFine function.  
+4. Output:  
+
+* The calculated fine is written to a file specified by the OUTPUT_PATH environment variable.
+
+**Input/Output**  
+
+**Input**  
+9 6 2015  
+6 6 2015  
+
+**Output**  
+45  
+**Explanation**  
+The book was returned 3 days late in the same month and year. The fine is 15×3=45.  
+
+---  
+
+**How to Use** 
+1. Save the code in a file, e.g., library_fine.rs
+2. Compile the program:
+   rustc library_fine.rs  
+
+3. Set the OUTPUT_PATH environment variable to specify the output file:
+   export OUTPUT_PATH=output.txt
+4. Run the program and provide input as specified in the problem statement.  
 
 
 
