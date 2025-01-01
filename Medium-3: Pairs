@@ -1,0 +1,60 @@
+use std::collections::HashSet;
+use std::env;
+use std::fs::File;
+use std::io::{self, BufRead, Write};
+
+/*
+ * The pairs function calculates the number of unique pairs of integers
+ * in the array arr such that their difference equals k.
+ */
+fn pairs(k: i32, arr: &[i32]) -> i32 {
+    let mut values: HashSet<i32> = HashSet::new();
+    let mut count = 0;
+
+    for &num in arr {
+        // Check if num - k exists in the set
+        if values.contains(&(num - k)) {
+            count += 1;
+        }
+
+        // Check if num + k exists in the set
+        if values.contains(&(num + k)) {
+            count += 1;
+        }
+
+        // Insert the current number into the set
+        values.insert(num);
+    }
+
+    count
+}
+
+fn main() {
+    let stdin = io::stdin();
+    let mut stdin_iterator = stdin.lock().lines();
+
+    // Create or open the output file specified by OUTPUT_PATH
+    let mut fptr = File::create(env::var("OUTPUT_PATH").unwrap()).unwrap();
+
+    // Read the first line with n and k
+    let first_multiple_input: Vec<String> = stdin_iterator.next().unwrap().unwrap()
+        .split(' ')
+        .map(|s| s.to_string())
+        .collect();
+
+    let n = first_multiple_input[0].trim().parse::<i32>().unwrap();
+    let k = first_multiple_input[1].trim().parse::<i32>().unwrap();
+
+    // Read the array of integers
+    let arr: Vec<i32> = stdin_iterator.next().unwrap().unwrap()
+        .trim_end()
+        .split(' ')
+        .map(|s| s.to_string().parse::<i32>().unwrap())
+        .collect();
+
+    // Compute the result
+    let result = pairs(k, &arr);
+
+    // Write the result to the output file
+    writeln!(&mut fptr, "{}", result).ok();
+}
