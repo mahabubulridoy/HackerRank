@@ -1,0 +1,64 @@
+use std::collections::HashMap;
+use std::env;
+use std::fs::File;
+use std::io::{self, BufRead, Write};
+
+/*
+ * The `isValid` function checks if a string meets the "valid" criteria.
+ * Returns "YES" if the string is valid, otherwise "NO".
+ */
+fn isValid(s: &str) -> String {
+    let mut freq_map: HashMap<char, i32> = HashMap::new();
+
+    // Count the frequency of each character in the string
+    for c in s.chars() {
+        *freq_map.entry(c).or_insert(0) += 1;
+    }
+
+    // Create a map to store the count of these frequencies
+    let mut freq_count: HashMap<i32, i32> = HashMap::new();
+    for &freq in freq_map.values() {
+        *freq_count.entry(freq).or_insert(0) += 1;
+    }
+
+    if freq_count.len() == 1 {
+        // All characters have the same frequency
+        return "YES".to_string();
+    } else if freq_count.len() == 2 {
+        // Two distinct frequencies are present
+        let mut iter = freq_count.iter();
+        let (&freq1, &count1) = iter.next().unwrap();
+        let (&freq2, &count2) = iter.next().unwrap();
+
+        // Check if one of the frequencies is 1 and occurs only once
+        if (freq1 == 1 && count1 == 1) || (freq2 == 1 && count2 == 1) {
+            return "YES".to_string();
+        }
+
+        // Check if the difference between the two frequencies is 1
+        // and the higher frequency occurs only once
+        if (freq1 - freq2).abs() == 1 && (count1 == 1 || count2 == 1) {
+            return "YES".to_string();
+        }
+    }
+
+    // The string is not valid
+    "NO".to_string()
+}
+
+fn main() {
+    let stdin = io::stdin();
+    let mut stdin_iterator = stdin.lock().lines();
+
+    // Create or open the output file specified by OUTPUT_PATH
+    let mut fptr = File::create(env::var("OUTPUT_PATH").unwrap()).unwrap();
+
+    // Read the input string
+    let s = stdin_iterator.next().unwrap().unwrap();
+
+    // Determine if the string is valid
+    let result = isValid(&s);
+
+    // Write the result to the output file
+    writeln!(&mut fptr, "{}", result).ok();
+}
