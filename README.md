@@ -655,8 +655,10 @@ Given two integers 𝑎 and 𝑏, find how many perfect square numbers lie betwe
 ---
 **Input/Output Explanation  
 **Input Format**  
-1. The first line contains an integer q, the number of queries.  
-2. Each of the next q lines contains two integers, a and b, defining the range [a,b]
+1. The first line contains an integer q, the number of queries.    
+2. Each of the next q lines contains two integers, a and b, defining the range [a,b]  
+**Output Format**
+For each query, output the number of perfect squares in the range [a,b]  
 
 **Example**  
 **Input**  
@@ -667,9 +669,25 @@ Given two integers 𝑎 and 𝑏, find how many perfect square numbers lie betwe
 2  
 0  
 **Explanatoni**  
-1. For the range [3,9], the perfect squares are 4 and 9, so the count is 2.
+1. For the range [3,9], the perfect squares are 4 and 9, so the count is 2.  
 2. For the range [17,24], there is no perfect squares, so the count is 0.
 
+**How to run the code**  
+
+1. Save the Code: Save the code in a file, e.g., count_squares.rs.
+2. Compile the program:
+   rustc count_squares.rs
+3. Set the output path: set the OUTPUT_PATH environment variable to specify the file where results will be saved.
+   export OUTPUT_PATH=output.txt  
+
+4. Run the program:
+   ./count_squares  
+provide input in the format:
+<number of queries>
+<a1> <b1>  
+<a2> <b2>  
+... 
+5. View the output: the results will be written to the file specified by OUTPUT_PATH.  
 **##########LibraryFine**  
 
 **Problem Description**  
