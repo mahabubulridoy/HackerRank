@@ -866,6 +866,47 @@ NO
 3. Returns "YES" if the string is valid, otherwise "NO".  
 
 
+**##########Sherlock&Anagrams**  
+
+**Explanation of the Code**  
+**Problem Statement**  
+The goal is to find the number of unordered pairs of substrings that are anagrams of each other. Two substrings are considered anagrams if one can be rearranged to form the other.  
+
+**Steps in the Function**  
+1. Generate Substrings:  
+
+* Iterate over all possible substrings of the input string.  
+* Sort the characters in each substring to create a "normalized" key.  
+* Store the count of each normalized substring in a HashMap.  
+2. Count Anagrammatic Pairs:  
+
+* For each substring that appears n times, the number of pairs is given by the formula:  
+Pairs=𝑛⋅(𝑛−1)/2  
+* Sum these values for all substrings to get the total number of anagrammatic pairs.  
+3. Return the Result:   
+
+* The final result is the total count of anagrammatic pairs.    
+**Complexity**  
+* Time Complexity:O(n3) in the worst case, where n is the length of the string. This is due to:  
+* O(n2) for generating all substrings.  
+* Sorting each substring takes O(klogk), where k is the length of the substring.  
+* Space Complexity: O(n2) for storing all substring keys.  
+
+**Example Input and Output**  
+**Input**  
+2  
+abba  
+abcd  
+**Output**    
+4  
+0  
+**Explanation**  
+1. For "abba":  
+* Substrings: ["a", "b", "b", "a", "ab", "bb", "ba", "abb", "bba", "abba"]  
+* Sorted keys: ["a", "b", "b", "a", "ab", "bb", "ab", "abb", "abb", "abba"]  
+* Anagrammatic pairs: ("a", "a"), ("b", "b"), ("ab", "ba"), ("abb", "bba").  
+2. For "abcd":  
+* Substrings do not form any anagrams.  
 
 
 
