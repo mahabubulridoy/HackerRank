@@ -810,9 +810,60 @@ rustc how_many_games.rs
    export OUTPUT_PATH=output.txt
 4. Run the program and provide input as specified in the problem statement. 
 
+**##########Sherlock&validstring**
 
-   
 
+**Explanation of the Code**  
+**Functionality**  
+The isValid function determines whether a string can be classified as "valid" based on the frequency of its characters. A string is considered valid if:
+
+1. All characters have the same frequency.
+2. It is possible to remove exactly one character to make all character frequencies equal.
+**Steps in the Function**  
+1. Build a Frequency Map:
+
+* Count the occurrences of each character using a HashMap.  
+* Example for input aabbcc:  
+    * Frequency Map: {'a': 2, 'b': 2, 'c': 2}.  
+2. Count Frequency of Frequencies:  
+
+* Count how many characters share the same frequency.  
+* Example for input aabbccc:  
+    *Frequency Map: {'a': 2, 'b': 2, 'c': 3}.  
+    *Frequency of Frequencies: {2: 2, 3: 1}.  
+3. Validation Rules:  
+
+    * If all characters have the same frequency, the string is valid.  
+        * Frequency of Frequencies: {2: 3}.  
+* If there are two distinct frequencies:  
+    *Check if one of the frequencies is 1 and occurs exactly once.  
+    *Check if the difference between the two frequencies is 1, and the higher frequency occurs only once.  
+4. Return Result:  
+
+* Return "YES" if the string meets the criteria; otherwise, return "NO".  
+**Complexity**    
+* Time Complexity: 𝑂(𝑛), where n is the length of the string. Building the frequency map and the frequency-of-frequencies map both take linear time.  
+* Space Complexity: O(k), where k is the number of unique characters in the string.  
+
+---  
+**Example Input and Output**  
+**Input**  
+aabbcc  
+**Output**  
+YES  
+**Input**  
+aabbccc  
+**Output** 
+YES  
+**Input**  
+aabbcccc  
+**Output**  
+NO  
+
+**How It Works**  
+1. Counts the frequency of each character in the string.  
+2. Analyzes the frequency counts to check if they satisfy the validity conditions.  
+3. Returns "YES" if the string is valid, otherwise "NO".  
 
 
 
