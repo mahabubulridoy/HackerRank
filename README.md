@@ -749,7 +749,9 @@ The book was returned 3 days late in the same month and year. The fine is 15×3=
 
 3. Set the OUTPUT_PATH environment variable to specify the output file:
    export OUTPUT_PATH=output.txt
-4. Run the program and provide input as specified in the problem statement.  
+4. Run the program and provide input as specified in the problem statement.
+
+   
 
 
 
