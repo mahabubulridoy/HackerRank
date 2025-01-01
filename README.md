@@ -994,3 +994,139 @@ fn pairs(k: i32, arr: &[i32]) -> i32 {
 **Output**
 
 3
+
+
+**##########The time in words**  
+
+This Rust program reads two integers (h and m) from standard input, representing the hour and minutes, and converts the time into a human-readable format in words (e.g., 3:00 becomes three o' clock).
+
+---  
+
+**Code Breakdown**  
+**Imports** 
+use std::env;  
+use std::fs::File;  
+use std::io::{self, BufRead, Write};  
+
+* env: Used to retrieve environment variables.
+* fs::File: Used to create and write to a file.
+* io::{self, BufRead, Write}: Provides input/output utilities for reading from standard input and writing to files.
+
+---  
+
+**The timeInWords Function**  
+
+fn timeInWords(h: i32, m: i32) -> String {
+    let numbers = [
+        "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven",
+        "twelve", "thirteen", "fourteen", "quarter", "sixteen", "seventeen", "eighteen",
+        "nineteen", "twenty", "twenty one", "twenty two", "twenty three", "twenty four",
+        "twenty five", "twenty six", "twenty seven", "twenty eight", "twenty nine", "half",
+    ];  
+
+* A numbers array maps numbers from 1 to 30 to their corresponding English words. For example, 1 maps to "one", 15 maps to "quarter", and 30 maps to "half".
+* These words are used to construct the output string.
+
+---  
+**Match Expression**  
+The core logic determines how the time should be represented in words based on the value of m (minutes):  
+
+match m {  
+    0 => format!("{} o' clock", numbers[h as usize]),  
+    1 => format!("one minute past {}", numbers[h as usize]),  
+    15 => format!("quarter past {}", numbers[h as usize]),  
+    30 => format!("half past {}", numbers[h as usize]),  
+    45 => format!("quarter to {}", numbers[(h % 12 + 1) as usize]),  
+    2..=30 => format!(  
+        "{} minutes past {}",  
+        numbers[m as usize],  
+        numbers[h as usize]  
+    ),  
+    31..=59 => format!(  
+        "{} minutes to {}",  
+        numbers[(60 - m) as usize],  
+        numbers[(h % 12 + 1) as usize]  
+    ),  
+    _ => String::new(),  
+}  
+
+m == 0: Outputs the hour with "o' clock". For example, 3:00 becomes "three o' clock".  
+m == 1: Outputs "one minute past {hour}".  
+m == 15: Outputs "quarter past {hour}".  
+m == 30: Outputs "half past {hour}".  
+m == 45: Outputs "quarter to {next hour}". The next hour is calculated as (h % 12 + 1).  
+2..=30: For minutes between 2 and 30, it outputs "X minutes past {hour}".  
+31..=59: For minutes between 31 and 59, it outputs "X minutes to {next hour}"  
+
+---  
+
+**Main Function**  
+The main function handles input and output:  
+
+fn main() {  
+    let stdin = io::stdin();  
+    let mut stdin_iterator = stdin.lock().lines();  
+
+    let mut fptr = File::create(env::var("OUTPUT_PATH").unwrap()).unwrap();  
+
+    let h = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();  
+    let m = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();  
+
+    let result = timeInWords(h, m);  
+
+    writeln!(&mut fptr, "{}", result).ok();  
+}  
+
+1. Read Input:  
+
+* stdin.lock().lines() locks standard input and creates an iterator over its lines.  
+* The first line contains the hour h, and the second line contains the minutes m. Both are parsed as i32.  
+2. Environment Variable:  
+
+* env::var("OUTPUT_PATH") retrieves the output file path from the environment.  
+* File::create creates a file at that path.  
+3. Compute Result:  
+
+timeInWords(h, m) converts the given time to words.  
+4. Write Output:  
+
+writeln! writes the result to the output file.  
+
+---  
+**Example Execution**  
+
+**Input**  
+5  
+45  
+Execution:  
+1. The hour h = 5, and minutes m = 45.  
+
+2. In timeInWords:  
+format!("quarter to {}", numbers[(h % 12 + 1) as usize])  
+h % 12 + 1 == 6, so the result is "quarter to six".
+3. The output "quarter to six" is written to the file specified by OUTPUT_PATH.  
+
+---   
+
+**Edge Cases**
+1. Exact Hour:  
+
+*Input: 6 0  
+*Output: "six o' clock"  
+2. One Minute Past:  
+
+* Input: 2 1  
+* Output: "one minute past two"  
+3. Half Past:  
+
+*Input: 7 30  
+*Output: "half past seven"  
+4. Minutes to Next Hour:  
+  
+*Input: 11 59  
+* Output: "one minute to twelve"  
+5. Invalid Input:  
+
+* If input is empty or invalid, the program will panic because of .unwrap().  
+
+
