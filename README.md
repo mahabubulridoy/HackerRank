@@ -906,7 +906,91 @@ abcd
 * Sorted keys: ["a", "b", "b", "a", "ab", "bb", "ab", "abb", "abb", "abba"]  
 * Anagrammatic pairs: ("a", "a"), ("b", "b"), ("ab", "ba"), ("abb", "bba").  
 2. For "abcd":  
-* Substrings do not form any anagrams.  
+* Substrings do not form any anagrams.
 
 
+**##########Pairs**  
+**Purpose of the Code**  
+This program calculates the number of pairs of numbers in a list where the difference between the two numbers equals a given value k.  
 
+**How it works**  
+1. The pairs Function
+This function does the main work:
+fn pairs(k: i32, arr: &[i32]) -> i32 {  
+    let mut values: HashSet<i32> = HashSet::new();  
+    let mut count = 0;  
+
+    for &num in arr {  
+        if values.contains(&(num - k)) {  
+            count += 1; // A pair with difference k exists  
+        }  
+
+        if values.contains(&(num + k)) {  
+            count += 1; // Another pair with difference k exists  
+        }  
+
+        values.insert(num); // Add current number to the set  
+    }  
+  
+    count // Return the total number of pairs  
+}  
+ * Inputs:
+   * k: the target difference.
+   * arr: the list of numbers to check.
+* process:
+  * use a HashSet to track numbers already seen.
+  * for each number, check if a number exists that differs by k
+  * increment the count for every valid pair found.
+* Output: The total number of valid pairs.  
+
+2. he main Function
+   fn main() {  
+    let stdin = io::stdin();  
+    let mut stdin_iterator = stdin.lock().lines();  
+
+    let mut fptr = File::create(env::var("OUTPUT_PATH").unwrap()).unwrap();  
+
+    let first_multiple_input: Vec<String> = stdin_iterator.next().unwrap().unwrap()  
+        .split(' ')  
+        .map(|s| s.to_string())  
+        .collect();  
+
+    let n = first_multiple_input[0].trim().parse::<i32>().unwrap();  
+    let k = first_multiple_input[1].trim().parse::<i32>().unwrap();  
+
+    let arr: Vec<i32> = stdin_iterator.next().unwrap().unwrap()  
+        .trim_end()  
+        .split(' ')  
+        .map(|s| s.to_string().parse::<i32>().unwrap())  
+        .collect();  
+
+    let result = pairs(k, &arr);  
+
+    writeln!(&mut fptr, "{}", result).ok();  
+}  
+
+
+* Steps:
+  1. Reads input valus for n (number of elements), k (target difference), and the list arr.  
+  2. calls the pairs function with k and arr to calculate the number of pairs.  
+  3. writes the result to an output file.
+
+**Example**  
+**Input**  
+5 2  
+1 5 3 4 2  
+* k=2
+* arr = [1,5,3,4,2]
+
+**Steps**  
+1. check pairs:  
+   * 1: No valid pairs.  
+   * 5: No valid pairs.  
+   * 3:3-2 =1 (valid) and 3+2=5  
+   * 4:4-2=2 valid  
+   * 2: no valid pairs  
+2. Total pairs =3
+
+**Output**
+
+3
